@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router';
-import { Users } from '../../api/users';
+
 
 export default class Register extends Component {
 
@@ -24,7 +24,7 @@ export default class Register extends Component {
               password: password,
               confirmPassword: confirmPassword
             };
-            Users.insert(user);
+            Meteor.call('user.post', user);
             ReactDOM.findDOMNode(this.refs.email).value = '';
             ReactDOM.findDOMNode(this.refs.username).value = '';
             ReactDOM.findDOMNode(this.refs.password).value = '';
